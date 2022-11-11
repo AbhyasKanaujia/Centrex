@@ -1,25 +1,29 @@
-const express = require("express");
-require("dotenv").config();
-const { errorHandler } = require("./middlewares/errorHandler.js");
-const MorganMiddleware = require("./middlewares/MorganMiddleware.js");
-const bookRoutes = require("./routes/bookRoutes.js");
+const express = require('express')
+const colors = require('colors')
+require('dotenv').config()
+const { errorHandler } = require('./middlewares/errorHandler.js')
+const MorganMiddleware = require('./middlewares/MorganMiddleware.js')
+const bookRoutes = require('./routes/bookRoutes.js')
+const connectDB = require('./configs/db.js')
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000
 
-const app = express();
+connectDB()
 
-app.use(MorganMiddleware);
+const app = express()
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(MorganMiddleware)
 
-app.use("/api/books", bookRoutes);
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-app.use(errorHandler);
+app.use('/api/books', bookRoutes)
+
+app.use(errorHandler)
 
 app.listen(
   PORT,
   console.log(
     `Server is running on port ${PORT} in ${process.env.NODE_ENV} mode`
   )
-);
+)
