@@ -26,7 +26,9 @@ const addBook = asyncHandler(async (req, res) => {
     throw new Error('Please add all fields')
   }
 
-  res.status(201).json({ message: 'Add a book' })
+  const book = await Book.create(req.body)
+
+  res.status(201).json(book)
 })
 
 // @desc    Get a book
