@@ -13,7 +13,7 @@ const addBook = (req, res) => {
 };
 
 // @desc    Get a book
-// @route   POST /api/books/:id
+// @route   GET /api/books/:id
 // @access  Public
 const getBook = (req, res) => {
   res.status(200).json({ message: `Add a book with id ${req.params.id}` });
