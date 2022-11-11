@@ -69,7 +69,17 @@ const updateBook = asyncHandler(async (req, res) => {
 // @route   POST /api/goals/:id
 // @access  Private
 const deleteBook = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Delete goal ${req.params.id}` })
+  const book = await Book.findById(req.params.id)
+
+  if (!book) {
+    res.status(404)
+
+    throw new Error('Book not found')
+  }
+
+  book.remove()
+
+  res.status(200).json({ _id: req.params.id })
 })
 
 module.exports = {
