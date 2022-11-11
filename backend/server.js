@@ -1,5 +1,6 @@
 const express = require("express");
 require("dotenv").config();
+const { errorHandler } = require("./middlewares/errorHandler.js");
 const MorganMiddleware = require("./middlewares/MorganMiddleware.js");
 const bookRoutes = require("./routes/bookRoutes.js");
 
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/books", bookRoutes);
+
+app.use(errorHandler);
 
 app.listen(
   PORT,

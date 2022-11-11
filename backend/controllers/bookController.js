@@ -17,11 +17,10 @@ const addBook = (req, res) => {
   ) {
     res.status(400);
 
-    throw new Error("Add a book");
+    throw new Error("Please add all fields");
   }
 
-  res.status(200).json({ message: "Add a book" });
-  res.status(200).json("Add a book");
+  res.status(201).json({ message: "Add a book" });
 };
 
 // @desc    Get a book
