@@ -18,6 +18,11 @@ const bookSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    seller: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
