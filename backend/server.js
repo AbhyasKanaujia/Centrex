@@ -9,6 +9,9 @@ const app = express();
 
 app.use(MorganMiddleware);
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.use("/api/books", bookRoutes);
 
 app.listen(

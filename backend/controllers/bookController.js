@@ -9,7 +9,19 @@ const getAllBooks = (req, res) => {
 // @route   POST /api/books
 // @access  Private
 const addBook = (req, res) => {
+  if (
+    !req.body.title ||
+    !req.body.author ||
+    !req.body.price ||
+    !req.body.isbn
+  ) {
+    res.status(400);
+
+    throw new Error("Add a book");
+  }
+
   res.status(200).json({ message: "Add a book" });
+  res.status(200).json("Add a book");
 };
 
 // @desc    Get a book
