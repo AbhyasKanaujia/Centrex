@@ -1,10 +1,14 @@
 const asyncHandler = require('express-async-handler')
 
+const Book = require('../models/bookModel.js')
+
 // @desc    Get All Books
 // @route   GET /api/books
 // @access  Public
 const getAllBooks = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: 'Get all books' })
+  const books = await Book.find()
+
+  res.status(200).json(books)
 })
 
 // @desc    Add a book
