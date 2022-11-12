@@ -2,7 +2,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import LinkContainer from 'react-router-bootstrap/LinkContainer'
-import { BiLogIn, BiUserCircle } from 'react-icons/bi'
+import { BiLogInCircle, BiUserCircle } from 'react-icons/bi'
 
 function Header() {
   return (
@@ -14,7 +14,7 @@ function Header() {
         <Nav className="ms-auto">
           <LinkContainer to="/login">
             <Nav.Link>
-              <BiLogIn /> Login
+              <BiLogInCircle /> Login
             </Nav.Link>
           </LinkContainer>
           <LinkContainer to="/register">
