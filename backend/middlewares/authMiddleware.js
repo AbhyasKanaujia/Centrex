@@ -16,13 +16,19 @@ const protect = asyncHandler(async (req, res, next) => {
 
       req.user = await User.findById(decoded.id).select('-password')
 
+      if (!req.user) {
+        res.status(401)
+
+        throw new Error('User does not exists')
+      }
+
       next()
     } catch (error) {
       console.error(error)
 
       res.status(401)
 
-      throw new Error('Not authorized')
+      throw new Error(error.message ? error.message : 'Not authorized')
     }
   }
 
