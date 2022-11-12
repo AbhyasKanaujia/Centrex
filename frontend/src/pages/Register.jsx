@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/esm/Col'
 import Button from 'react-bootstrap/esm/Button'
 import Toast from 'react-bootstrap/esm/Toast'
 import ToastContainer from 'react-bootstrap/esm/ToastContainer'
+import Spinner from '../components/Spinner'
 import { register, reset } from '../features/auth/authSlice'
 
 function Register() {
@@ -42,6 +43,11 @@ function Register() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    if (isSuccess || user) {
+      console.log('User created. navigating to home.')
+      navigate('/')
+    }
+
     if (isError) {
       setToast({
         visibility: true,
@@ -49,14 +55,10 @@ function Register() {
         message,
         variant: 'danger',
       })
-
-      if (isSuccess || user) {
-        navigate('/')
-      }
     }
 
     dispatch(reset())
-  }, [isError, message, isSuccess, user, navigate])
+  }, [isError, message, isSuccess, user, navigate, dispatch])
 
   const {
     name,
@@ -100,6 +102,10 @@ function Register() {
 
       dispatch(register(userData))
     }
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
