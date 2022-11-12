@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import { BiUser } from 'react-icons/bi'
 import Form from 'react-bootstrap/Form'
@@ -37,6 +38,9 @@ function Register() {
     (store) => store.auth
   )
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   useEffect(() => {
     if (isError) {
       setToast({
@@ -45,8 +49,12 @@ function Register() {
         message,
         variant: 'danger',
       })
+
+      if (isSuccess || user) {
+        navigate('/')
+      }
     }
-  }, [isError, message])
+  }, [isError, message, isSuccess, user, navigate])
 
   const {
     name,
@@ -59,8 +67,6 @@ function Register() {
     password,
     confirmPassword,
   } = formData
-
-  const dispatch = useDispatch()
 
   const onChange = (e) => {
     setFormData((state) => ({
