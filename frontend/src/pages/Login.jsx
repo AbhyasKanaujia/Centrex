@@ -84,33 +84,35 @@ function Login() {
         </h1>
         <p className="text-center">Login and start finding products</p>
       </Row>
-      <Row className="justify-content-center">
-        <Form md="8" lg="6" onSubmit={(e) => onSubmit(e)}>
-          <Form.Group as={Col}>
-            <Form.Control
-              type="email"
-              placeholder="Email or Phone"
-              className="my-2"
-              name="emailOrPhone"
-              value={emailOrPhone}
-              onChange={(e) => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group as={Col}>
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              className="my-2"
-              name="password"
-              value={password}
-              onChange={(e) => onChange(e)}
-            />
-          </Form.Group>
-          <Form.Group className="my-3">
-            <Button type="submit" className="w-100">
-              Login
-            </Button>
-          </Form.Group>
+      <Row>
+        <Form onSubmit={(e) => onSubmit(e)}>
+          <Col md="8" lg="6" className="mx-auto">
+            <Form.Group>
+              <Form.Control
+                type="email"
+                placeholder="Email or Phone"
+                className="my-2"
+                name="emailOrPhone"
+                value={emailOrPhone}
+                onChange={(e) => onChange(e)}
+              />
+            </Form.Group>
+            <Form.Group as={Col}>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                className="my-2"
+                name="password"
+                value={password}
+                onChange={(e) => onChange(e)}
+              />
+            </Form.Group>
+            <Form.Group className="my-3">
+              <Button type="submit" className="w-100">
+                Login
+              </Button>
+            </Form.Group>
+          </Col>
         </Form>
       </Row>
       <ToastContainer position="top-center" className="p-3">

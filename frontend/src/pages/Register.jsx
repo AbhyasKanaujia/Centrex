@@ -115,113 +115,111 @@ function Register() {
         </h1>
         <p className="text-center">Please create an account</p>
       </Row>
-      <Row>
-        <Form onSubmit={(e) => onSubmit(e)}>
-          <Col md="8" lg="6" className="mx-auto">
-            <Form.Group>
+      <Form onSubmit={(e) => onSubmit(e)}>
+        <Col md="8" lg="6" className="mx-auto">
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Name"
+              className="my-2"
+              name="name"
+              value={name}
+              onChange={(e) => onChange(e)}
+            />
+          </Form.Group>
+          <Row>
+            <Form.Group as={Col}>
               <Form.Control
-                type="text"
-                placeholder="Name"
+                type="email"
+                placeholder="Email"
                 className="my-2"
-                name="name"
-                value={name}
+                name="email"
+                value={email}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
-            <Row>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="email"
-                  placeholder="Email"
-                  className="my-2"
-                  name="email"
-                  value={email}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="my-2"
-                  name="phone"
-                  value={phone}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-            </Row>
-            <Form.Group>
+            <Form.Group as={Col}>
               <Form.Control
-                type="text"
-                placeholder="Address Line 1"
+                type="tel"
+                placeholder="Phone Number"
                 className="my-2"
-                name="line1"
-                value={line1}
+                name="phone"
+                value={phone}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
-            <Form.Group>
+          </Row>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Address Line 1"
+              className="my-2"
+              name="line1"
+              value={line1}
+              onChange={(e) => onChange(e)}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              type="text"
+              placeholder="Address Line 2"
+              className="my-2"
+              name="line2"
+              value={line2}
+              onChange={(e) => onChange(e)}
+            />
+          </Form.Group>
+          <Row>
+            <Form.Group as={Col}>
               <Form.Control
                 type="text"
-                placeholder="Address Line 2"
+                placeholder="City"
                 className="my-2"
-                name="line2"
-                value={line2}
+                name="city"
+                value={city}
                 onChange={(e) => onChange(e)}
               />
             </Form.Group>
-            <Row>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="text"
-                  placeholder="City"
-                  className="my-2"
-                  name="city"
-                  value={city}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="text"
-                  placeholder="State"
-                  className="my-2"
-                  name="state"
-                  value={state}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  className="my-2"
-                  name="password"
-                  value={password}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-              <Form.Group as={Col}>
-                <Form.Control
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="my-2"
-                  name="confirmPassword"
-                  value={confirmPassword}
-                  onChange={(e) => onChange(e)}
-                />
-              </Form.Group>
-            </Row>
-            <Form.Group className="my-3">
-              <Button type="submit" className="w-100">
-                Create an account
-              </Button>
+            <Form.Group as={Col}>
+              <Form.Control
+                type="text"
+                placeholder="State"
+                className="my-2"
+                name="state"
+                value={state}
+                onChange={(e) => onChange(e)}
+              />
             </Form.Group>
-          </Col>
-        </Form>
-      </Row>
+          </Row>
+          <Row>
+            <Form.Group as={Col}>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                className="my-2"
+                name="password"
+                value={password}
+                onChange={(e) => onChange(e)}
+              />
+            </Form.Group>
+            <Form.Group as={Col}>
+              <Form.Control
+                type="password"
+                placeholder="Confirm Password"
+                className="my-2"
+                name="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => onChange(e)}
+              />
+            </Form.Group>
+          </Row>
+          <Form.Group className="my-3">
+            <Button type="submit" className="w-100">
+              Create an account
+            </Button>
+          </Form.Group>
+        </Col>
+      </Form>
       <ToastContainer position="top-center" className="p-3">
         <Toast
           show={toast.visibility}

@@ -4,7 +4,7 @@ import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Header from './components/Header'
-import Books from './pages/Books'
+import Books from './pages/Books/Books'
 
 function App() {
   return (
