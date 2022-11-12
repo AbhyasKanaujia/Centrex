@@ -5,11 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js --watch backend"
+    "server": "nodemon backend/server.js --watch backend",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Abhyas Kumar Kanaujia",
   "license": "MIT",
   "devDependencies": {
+    "concurrently": "^7.5.0",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
