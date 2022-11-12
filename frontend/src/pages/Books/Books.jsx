@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/esm/Form'
 import InputGroup from 'react-bootstrap/esm/InputGroup'
 import Row from 'react-bootstrap/esm/Row'
 import { BiBookAdd } from 'react-icons/bi'
+import LinkContainer from 'react-router-bootstrap/LinkContainer'
 
 const Books = () => {
   return (
@@ -20,9 +21,11 @@ const Books = () => {
             </Col>
             <Col xs="auto px-1">
               <Form.Group className="my-2">
-                <Button>
-                  <BiBookAdd /> Add my Book
-                </Button>
+                <LinkContainer to="/books/add">
+                  <Button>
+                    <BiBookAdd /> Add my Book
+                  </Button>
+                </LinkContainer>
               </Form.Group>
             </Col>
           </Row>
