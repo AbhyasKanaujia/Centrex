@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import Row from 'react-bootstrap/Row'
 import { BiUser } from 'react-icons/bi'
 import Form from 'react-bootstrap/Form'
@@ -17,6 +18,10 @@ function Register() {
     password: '',
     confirmPassword: '',
   })
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (store) => store.auth
+  )
 
   const {
     name,
