@@ -32,7 +32,7 @@ export const register = createAsyncThunk(
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducer: {
+  reducers: {
     reset: (state) => {
       state.isSuccess = false
       state.isLoading = false

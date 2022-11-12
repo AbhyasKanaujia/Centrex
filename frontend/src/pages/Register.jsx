@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import Row from 'react-bootstrap/Row'
 import { BiUser } from 'react-icons/bi'
 import Form from 'react-bootstrap/Form'
@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/esm/Col'
 import Button from 'react-bootstrap/esm/Button'
 import Toast from 'react-bootstrap/esm/Toast'
 import ToastContainer from 'react-bootstrap/esm/ToastContainer'
+import { register } from '../features/auth/authSlice'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -36,6 +37,17 @@ function Register() {
     (store) => store.auth
   )
 
+  useEffect(() => {
+    if (isError) {
+      setToast({
+        visibility: true,
+        title: 'Something went wrong',
+        message,
+        variant: 'danger',
+      })
+    }
+  }, [isError, message])
+
   const {
     name,
     email,
@@ -47,6 +59,8 @@ function Register() {
     password,
     confirmPassword,
   } = formData
+
+  const dispatch = useDispatch()
 
   const onChange = (e) => {
     setFormData((state) => ({
@@ -64,6 +78,19 @@ function Register() {
         message: 'Please try entering passwords again',
         variant: 'danger',
       })
+    } else {
+      const userData = {
+        name,
+        email,
+        phone,
+        line1,
+        line2,
+        city,
+        state,
+        password,
+      }
+
+      dispatch(register(userData))
     }
   }
 
