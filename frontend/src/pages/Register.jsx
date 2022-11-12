@@ -5,6 +5,7 @@ import { BiUser } from 'react-icons/bi'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/esm/Col'
 import Button from 'react-bootstrap/esm/Button'
+import Toast from 'react-bootstrap/esm/Toast'
 
 function Register() {
   const [formData, setFormData] = useState({
