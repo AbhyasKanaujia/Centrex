@@ -44,7 +44,6 @@ function Register() {
 
   useEffect(() => {
     if (isSuccess || user) {
-      console.log('User created. navigating to home.')
       navigate('/')
     }
 
