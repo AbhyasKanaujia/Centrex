@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/esm/Col'
 import Button from 'react-bootstrap/esm/Button'
 import Toast from 'react-bootstrap/esm/Toast'
 import ToastContainer from 'react-bootstrap/esm/ToastContainer'
-import { register } from '../features/auth/authSlice'
+import { register, reset } from '../features/auth/authSlice'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -54,6 +54,8 @@ function Register() {
         navigate('/')
       }
     }
+
+    dispatch(reset())
   }, [isError, message, isSuccess, user, navigate])
 
   const {
