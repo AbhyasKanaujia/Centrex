@@ -13,7 +13,6 @@ function Header() {
   const dispatch = useDispatch()
 
   const { user } = useSelector((store) => store.auth)
-  console.log(user)
 
   const onLogout = () => {
     dispatch(logout())
@@ -30,7 +29,7 @@ function Header() {
         </LinkContainer>
         <Nav className="ms-auto">
           {user ? (
-            <Button variant="outline-dark">
+            <Button variant="outline-dark" onClick={onLogout}>
               <BiLogOutCircle /> Logout
             </Button>
           ) : (
