@@ -26,7 +26,7 @@ const addBook = asyncHandler(async (req, res) => {
     throw new Error('Please add all fields')
   }
 
-  const book = await Book.create(req.body)
+  const book = await Book.create({ ...req.body, seller: req.user._id })
 
   res.status(201).json(book)
 })
@@ -58,6 +58,12 @@ const updateBook = asyncHandler(async (req, res) => {
     throw new Error('Book not found')
   }
 
+  if (!book.seller.compare(req.user._id)) {
+    res.status(401)
+
+    throw new Error('Only the seller can update book information')
+  }
+
   const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   })
@@ -75,6 +81,12 @@ const deleteBook = asyncHandler(async (req, res) => {
     res.status(404)
 
     throw new Error('Book not found')
+  }
+
+  if (!book.seller.compare(req.user._id)) {
+    res.status(401)
+
+    throw new Error('Only the seller can delete a book')
   }
 
   book.remove()
