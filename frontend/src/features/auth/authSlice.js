@@ -40,7 +40,11 @@ export const authSlice = createSlice({
       state.message = ''
     },
   },
-  extraReducers: () => {},
+  extraReducers: (builder) => {
+    builder.addCase(register.pending, (state) => {
+      state.isLoading = true
+    })
+  },
 })
 
 export const { reset } = authSlice.actions
