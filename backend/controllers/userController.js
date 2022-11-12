@@ -80,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) => {
       email: user.email,
       phone: user.phone,
       address: user.address,
-      token: generateToken(res._id),
+      token: generateToken(user._id),
     })
   } else {
     res.status(400)
@@ -92,9 +92,9 @@ const loginUser = asyncHandler(async (req, res) => {
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private
-const getMe = (req, res) => {
-  res.json({ message: 'User data display ' })
-}
+const getMe = asyncHandler(async (req, res) => {
+  res.status(200).json(req.user)
+})
 
 module.exports = {
   registerUser,
