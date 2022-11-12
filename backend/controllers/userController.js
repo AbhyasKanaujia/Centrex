@@ -13,7 +13,7 @@ const generateToken = (id) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, phone, line1, line2, city, state, password } = req.body
 
-  if (!name || !email || !password || !line1 || !city || !state) {
+  if (!name || !email || !password || !line1 || !city || !state || !phone) {
     res.status(400)
 
     throw new Error('Please add all fields')
