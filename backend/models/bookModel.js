@@ -23,6 +23,10 @@ const bookSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    visible: {
+      type: Boolean,
+      default: true,
+    },
   },
   {
     timestamps: true,

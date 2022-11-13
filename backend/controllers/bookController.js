@@ -6,7 +6,7 @@ const Book = require('../models/bookModel.js')
 // @route   GET /api/books
 // @access  Public
 const getAllBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find()
+  const books = await Book.find({ visible: true }).select('-visible')
 
   res.status(200).json(books)
 })
@@ -35,7 +35,13 @@ const addBook = asyncHandler(async (req, res) => {
 // @route   GET /api/books/:id
 // @access  Public
 const getBook = asyncHandler(async (req, res) => {
-  const book = await Book.findById(req.params.id)
+  const book = await Book.findById(req.params.id).select('-visible')
+
+  if (!book.visible && !book.seller.compare(req.user._id)) {
+    res.status(401)
+
+    throw new Error('Book is not available anymore')
+  }
 
   if (!book) {
     res.status(404)
