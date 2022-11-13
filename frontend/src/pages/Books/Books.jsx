@@ -13,7 +13,8 @@ import Spinner from '../../components/Spinner'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import Toast from 'react-bootstrap/Toast'
 import Card from 'react-bootstrap/Card'
-import { BiCart } from 'react-icons/bi'
+import { BiPhoneCall } from 'react-icons/bi'
+import { BsFillChatLeftTextFill } from 'react-icons/bs'
 
 const Books = () => {
   const dispatch = useDispatch()
@@ -96,9 +97,11 @@ const Books = () => {
                 </LinkContainer>
                 <div className="d-flex  justify-content-end">
                   <Button className="ms-2">
-                    <BiCart />
+                    <BiPhoneCall />
                   </Button>
-                  <Button className="ms-2">Buy Now</Button>
+                  <Button className="ms-2">
+                    <BsFillChatLeftTextFill /> Chat
+                  </Button>
                 </div>
               </Card.Body>
             </Card>

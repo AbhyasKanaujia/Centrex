@@ -6,6 +6,7 @@ import Register from './pages/Register'
 import Header from './components/Header'
 import Books from './pages/Books/Books'
 import AddBook from './pages/Books/AddBook'
+import BookInfo from './pages/Books/BookInfo'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/books" element={<Books />} />
             <Route path="/books/add" element={<AddBook />} />
+            <Route path="/books/:id" element={<BookInfo />} />
           </Routes>
         </Container>
       </Router>
