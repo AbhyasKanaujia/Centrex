@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import booksService from './booksService'
 
-const books = JSON.parse(localStorage.getItem('books'))
 const initialState = {
-  books: books ? books : [],
+  books: [],
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -23,7 +22,6 @@ export const createBook = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-
       return thunkAPI.rejectWithValue(message)
     }
   }

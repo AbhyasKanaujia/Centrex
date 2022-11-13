@@ -1,22 +1,18 @@
-import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import InputGroup from 'react-bootstrap/InputGroup'
 import Form from 'react-bootstrap/Form'
-import Col from 'react-bootstrap/esm/Col'
-import Button from 'react-bootstrap/esm/Button'
-import Toast from 'react-bootstrap/esm/Toast'
-import ToastContainer from 'react-bootstrap/esm/ToastContainer'
-import Spinner from '../../components/Spinner'
+import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
+import ToastContainer from 'react-bootstrap/ToastContainer'
+import Toast from 'react-bootstrap/Toast'
 import { createBook, reset } from '../../features/books/booksSlice'
-import InputGroup from 'react-bootstrap/esm/InputGroup'
+import Spinner from '../../components/Spinner'
 
 function AddBook() {
-  const [formData, setFormData] = useState({
-    title: '',
-    author: '',
-    price: '',
-    isbn: '',
-  })
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const toastInitialState = {
     visibility: false,
@@ -29,24 +25,14 @@ function AddBook() {
 
   const dismissToast = () => setToast({ visibility: false })
 
+  const { user } = useSelector((store) => store.auth)
   const { isLoading, isSuccess, isError, message } = useSelector(
     (store) => store.books
   )
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const { user } = useSelector((store) => store.auth)
-
   useEffect(() => {
     if (!user) {
-      navigate('/login?redirect=/books/add')
-    }
-  }, [user, navigate])
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate('/books')
+      navigate('/login?redicrect=/books/add')
     }
 
     if (isError) {
@@ -54,17 +40,30 @@ function AddBook() {
         visibility: true,
         title: 'Something went wrong',
         message,
-        variant: 'warning',
+        variant: 'danger',
       })
     }
 
-    dispatch(reset())
-  }, [isError, message, isSuccess, navigate, dispatch])
+    if (isSuccess) {
+      navigate('/books')
+    }
 
-  const { title, author, price, isbn } = formData
+    return () => {
+      dispatch(reset())
+    }
+  }, [user, navigate, isSuccess, isError, message, dispatch])
+
+  const [formdData, setFormdData] = useState({
+    title: '',
+    author: '',
+    price: '',
+    isbn: '',
+  })
+
+  const { title, author, price, isbn } = formdData
 
   const onChange = (e) => {
-    setFormData((state) => ({
+    setFormdData((state) => ({
       ...state,
       [e.target.name]: e.target.value,
     }))
@@ -137,7 +136,7 @@ function AddBook() {
             />
           </Form.Group>
           <Form.Group className="my-3">
-            <Button type="submit" className="w-100">
+            <Button type="submit" className="w-100 ">
               Add my Book
             </Button>
           </Form.Group>
