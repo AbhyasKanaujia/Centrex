@@ -58,9 +58,10 @@ function AddBook() {
     author: '',
     price: '',
     isbn: '',
+    imageURL: '',
   })
 
-  const { title, author, price, isbn } = formdData
+  const { title, author, price, isbn, imageURL } = formdData
 
   const onChange = (e) => {
     setFormdData((state) => ({
@@ -77,6 +78,7 @@ function AddBook() {
       author,
       price,
       isbn,
+      imageURL,
     }
 
     dispatch(createBook(bookData))
@@ -133,6 +135,16 @@ function AddBook() {
               name="isbn"
               value={isbn}
               id="isbn"
+            />
+          </Form.Group>
+          <Form.Group className="my-2">
+            <Form.Control
+              type="url"
+              placeholder="Book Cover URL"
+              onChange={(e) => onChange(e)}
+              name="imageURL"
+              value={imageURL}
+              id="imageURL"
             />
           </Form.Group>
           <Form.Group className="my-3">

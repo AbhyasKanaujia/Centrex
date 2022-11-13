@@ -27,6 +27,10 @@ const bookSchema = mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    imageURL: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -19,7 +19,8 @@ const addBook = asyncHandler(async (req, res) => {
     !req.body.title ||
     !req.body.author ||
     !req.body.price ||
-    !req.body.isbn
+    !req.body.isbn ||
+    !req.body.imageURL
   ) {
     res.status(400)
 

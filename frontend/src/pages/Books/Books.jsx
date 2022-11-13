@@ -83,6 +83,16 @@ const Books = () => {
         {books.map((book) => (
           <Col key={book._id}>
             <Card>
+              <Card.Img
+                variant="top"
+                src={book.imageURL}
+                style={{
+                  maxWidth: '18rem',
+                  maxHeight: '11rem',
+                  objectFit: 'cover',
+                }}
+                className="mx-auto"
+              />
               <Card.Body>
                 <LinkContainer
                   to={`/books/${book._id}`}

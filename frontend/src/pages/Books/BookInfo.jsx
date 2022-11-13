@@ -9,6 +9,7 @@ import { getBook, reset } from '../../features/books/booksSlice'
 import Spinner from '../../components/Spinner'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import Toast from 'react-bootstrap/Toast'
+import Image from 'react-bootstrap/Image'
 import { useParams } from 'react-router-dom'
 
 function BookInfo() {
@@ -53,8 +54,10 @@ function BookInfo() {
 
   return (
     <>
-      <Row>
-        {/* <Col>Product Image</Col> */}
+      <Row className="my-3">
+        <Col xs="auto">
+          <img alt={books[0].title} src={books[0].imageURL} />
+        </Col>
         <Col>
           <h1>{books[0].title}</h1>
           <h4>{books[0].author}</h4>
