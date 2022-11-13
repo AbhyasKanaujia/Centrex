@@ -23,6 +23,18 @@ const bookSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    sellerContact: {
+      type: String,
+      required: true,
+    },
+    sellerName: {
+      type: String,
+      require: true,
+    },
+    sellerAddress: {
+      type: String,
+      required: true,
+    },
     visible: {
       type: Boolean,
       default: true,

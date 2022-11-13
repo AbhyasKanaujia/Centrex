@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { BiPhoneCall } from 'react-icons/bi'
-import { BsFillChatLeftTextFill } from 'react-icons/bs'
+import { BsWhatsapp } from 'react-icons/bs'
 import { getBook, reset } from '../../features/books/booksSlice'
 import Spinner from '../../components/Spinner'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import Toast from 'react-bootstrap/Toast'
-import Image from 'react-bootstrap/Image'
 import { useParams } from 'react-router-dom'
 
 function BookInfo() {
@@ -62,13 +60,17 @@ function BookInfo() {
           <h1>{books[0].title}</h1>
           <h4>{books[0].author}</h4>
           <p>ISBN: {books[0].isbn}</p>
+          <p>Posted by: {books[0].sellerName}</p>
           <div className="d-flex  justify-content-end">
-            <Button className="ms-2">
-              <BiPhoneCall />
-            </Button>
-            <Button className="ms-2">
-              <BsFillChatLeftTextFill /> Chat
-            </Button>
+            <a
+              href={`https://wa.me/${books[0].sellerContact}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button className="ms-2">
+                <BsWhatsapp /> {books[0].sellerContact}
+              </Button>
+            </a>
           </div>
         </Col>
       </Row>

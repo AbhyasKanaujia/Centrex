@@ -27,7 +27,13 @@ const addBook = asyncHandler(async (req, res) => {
     throw new Error('Please add all fields')
   }
 
-  const book = await Book.create({ ...req.body, seller: req.user._id })
+  const book = await Book.create({
+    ...req.body,
+    seller: req.user._id,
+    sellerName: req.user.name,
+    sellerContact: req.user.phone,
+    sellerAddress: req.user.address,
+  })
 
   res.status(201).json(book)
 })

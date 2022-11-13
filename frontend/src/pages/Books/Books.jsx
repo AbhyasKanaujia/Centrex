@@ -94,22 +94,19 @@ const Books = () => {
                 className="mx-auto"
               />
               <Card.Body>
-                <LinkContainer
-                  to={`/books/${book._id}`}
-                  style={{ cursor: 'pointer' }}
-                >
-                  <Row>
-                    <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>{book.author}</Card.Text>
-                  </Row>
-                </LinkContainer>
+                <Row>
+                  <Card.Title>{book.title}</Card.Title>
+                  <Card.Text>{book.author}</Card.Text>
+                </Row>
                 <div className="d-flex  justify-content-end">
-                  <Button className="ms-2">
-                    <BiPhoneCall />
-                  </Button>
-                  <Button className="ms-2">
-                    <BsFillChatLeftTextFill /> Chat
-                  </Button>
+                  <LinkContainer
+                    to={`/books/${book._id}`}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Button className="ms-2">
+                      <BsFillChatLeftTextFill /> Contact Seller
+                    </Button>
+                  </LinkContainer>
                 </div>
               </Card.Body>
             </Card>
