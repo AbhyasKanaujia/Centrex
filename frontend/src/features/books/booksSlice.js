@@ -61,6 +61,24 @@ export const getBook = createAsyncThunk(
   }
 )
 
+export const getUserBooks = createAsyncThunk(
+  'books/getUserBooks',
+  async (_, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      return await booksService.getUserBooks(token)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const booksSlice = createSlice({
   name: 'books',
   initialState,
@@ -74,6 +92,7 @@ export const booksSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Create Book
       .addCase(createBook.pending, (state) => {
         state.isLoading = true
       })
@@ -87,6 +106,7 @@ export const booksSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      // Get all books
       .addCase(getBooks.pending, (state) => {
         state.isLoading = true
       })
@@ -100,6 +120,7 @@ export const booksSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+      // Get single book
       .addCase(getBook.pending, (state) => {
         state.isLoading = true
       })
@@ -109,6 +130,20 @@ export const booksSlice = createSlice({
         state.books = [action.payload]
       })
       .addCase(getBook.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      // Get all user books
+      .addCase(getUserBooks.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getUserBooks.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.books = action.payload
+      })
+      .addCase(getUserBooks.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

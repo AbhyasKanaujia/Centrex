@@ -3,6 +3,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/esm/Button'
 import LinkContainer from 'react-router-bootstrap/LinkContainer'
+import Dropdown from 'react-bootstrap/Dropdown'
 import { BiLogInCircle, BiUserCircle, BiLogOutCircle } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -29,9 +30,19 @@ function Header() {
         </LinkContainer>
         <Nav className="ms-auto">
           {user ? (
-            <Button variant="outline-dark" onClick={onLogout}>
-              <BiLogOutCircle /> Logout
-            </Button>
+            <Dropdown>
+              <Dropdown.Toggle variant="outline-dark" id="header-dropdown">
+                {user.name}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <LinkContainer to="/mycontent">
+                  <Dropdown.Item>My Content</Dropdown.Item>
+                </LinkContainer>
+                <Dropdown.Item onClick={onLogout}>
+                  <BiLogOutCircle /> Logout
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           ) : (
             <>
               <LinkContainer to="/login">

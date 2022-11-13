@@ -27,6 +27,18 @@ const getBook = async (bookId) => {
   return response.data
 }
 
-const booksService = { createBook, getBooks, getBook }
+const getUserBooks = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.get(API_URL + '/my', config)
+
+  return response.data
+}
+
+const booksService = { createBook, getBooks, getBook, getUserBooks }
 
 export default booksService
