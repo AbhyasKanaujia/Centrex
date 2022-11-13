@@ -46,6 +46,15 @@ const getBook = asyncHandler(async (req, res) => {
   res.status(200).json(book)
 })
 
+// @desc    Update user book
+// @route   POST /api/goals/:id
+// @access  Private
+const getUserBooks = asyncHandler(async (req, res) => {
+  const books = await Book.find({ seller: req.user._id })
+
+  res.status(200).json(books)
+})
+
 // @desc    Update a book
 // @route   POST /api/goals/:id
 // @access  Private
@@ -98,6 +107,7 @@ module.exports = {
   getAllBooks,
   addBook,
   getBook,
+  getUserBooks,
   updateBook,
   deleteBook,
 }
