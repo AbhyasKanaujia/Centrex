@@ -8,6 +8,7 @@ import Books from './pages/Books/Books'
 import AddBook from './pages/Books/AddBook'
 import BookInfo from './pages/Books/BookInfo'
 import UserContent from './pages/ContentManager/UserContent'
+import EditBook from './pages/ContentManager/Books/EditBook'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/books/add" element={<AddBook />} />
             <Route path="/books/:id" element={<BookInfo />} />
+            <Route path="/books/edit/:id" element={<EditBook />} />
           </Routes>
         </Container>
       </Router>

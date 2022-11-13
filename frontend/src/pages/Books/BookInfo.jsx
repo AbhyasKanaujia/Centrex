@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom'
 
 function BookInfo() {
   const dispatch = useDispatch()
-  const params = useParams()
+  const { id } = useParams()
 
   const toastInitialState = {
     visibility: false,
@@ -31,8 +31,8 @@ function BookInfo() {
   )
 
   useEffect(() => {
-    dispatch(getBook('6370b69712ca8035f4496a7f'))
-  }, [dispatch, params])
+    dispatch(getBook(id))
+  }, [dispatch, id])
 
   useEffect(() => {
     if (isError) {

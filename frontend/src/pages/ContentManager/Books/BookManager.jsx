@@ -5,13 +5,13 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import { BiEdit, BiTrash } from 'react-icons/bi'
-import { GrFormView, GrFormViewHide } from 'react-icons/gr'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   getUserBooks,
   reset as resetBooks,
 } from '../../../features/books/booksSlice'
 import Spinner from '../../../components/Spinner'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const BookManager = () => {
   const dispatch = useDispatch()
@@ -72,9 +72,11 @@ const BookManager = () => {
                   <td>{book.price}</td>
                   <td>
                     <ButtonGroup>
-                      <Button variant="dark" title="Edit">
-                        <BiEdit />
-                      </Button>
+                      <LinkContainer to={`/books/edit/${book._id}`}>
+                        <Button variant="dark" title="Edit">
+                          <BiEdit />
+                        </Button>
+                      </LinkContainer>
                       <Button variant="danger" title="Delete">
                         <BiTrash />
                       </Button>
