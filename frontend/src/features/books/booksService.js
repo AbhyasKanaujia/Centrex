@@ -15,6 +15,12 @@ const createBook = async (bookData, token) => {
   return response.data
 }
 
-const booksService = { createBook }
+const getBooks = async () => {
+  const response = await axios.get(API_URL)
+
+  return response.data
+}
+
+const booksService = { createBook, getBooks }
 
 export default booksService
