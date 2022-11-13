@@ -35,7 +35,7 @@ const addBook = asyncHandler(async (req, res) => {
 // @route   GET /api/books/:id
 // @access  Public
 const getBook = asyncHandler(async (req, res) => {
-  const book = await Book.findById(req.params.id).select('-visible')
+  const book = await Book.findById(req.params.id)
 
   if (!book.visible && !book.seller.compare(req.user._id)) {
     res.status(401)

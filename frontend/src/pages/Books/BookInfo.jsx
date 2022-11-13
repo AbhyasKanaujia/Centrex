@@ -5,13 +5,15 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { BiPhoneCall } from 'react-icons/bi'
 import { BsFillChatLeftTextFill } from 'react-icons/bs'
-import { getUserBooks, reset } from '../../features/books/booksSlice'
+import { getBook, reset } from '../../features/books/booksSlice'
 import Spinner from '../../components/Spinner'
 import ToastContainer from 'react-bootstrap/ToastContainer'
 import Toast from 'react-bootstrap/Toast'
+import { useParams } from 'react-router-dom'
 
 function BookInfo() {
   const dispatch = useDispatch()
+  const params = useParams()
 
   const toastInitialState = {
     visibility: false,
@@ -24,9 +26,13 @@ function BookInfo() {
 
   const dismissToast = () => setToast({ visibility: false })
 
-  const { books, isLoading, isError, message } = useSelector(
+  const { books, isSuccess, isLoading, isError, message } = useSelector(
     (store) => store.books
   )
+
+  useEffect(() => {
+    dispatch(getBook('6370b69712ca8035f4496a7f'))
+  }, [dispatch, params])
 
   useEffect(() => {
     if (isError) {
@@ -38,8 +44,9 @@ function BookInfo() {
       })
     }
 
-    dispatch(getUserBooks())
-  }, [isError, message])
+    dispatch(reset())
+  }, [isError, isSuccess, message, dispatch])
+
   if (isLoading) {
     return <Spinner />
   }

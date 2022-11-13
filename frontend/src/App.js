@@ -7,7 +7,7 @@ import Header from './components/Header'
 import Books from './pages/Books/Books'
 import AddBook from './pages/Books/AddBook'
 import BookInfo from './pages/Books/BookInfo'
-import UserContent from './pages/UserContent'
+import UserContent from './pages/ContentManager/UserContent'
 
 function App() {
   return (

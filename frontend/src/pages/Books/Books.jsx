@@ -30,7 +30,7 @@ const Books = () => {
 
   const dismissToast = () => setToast({ visibility: false })
 
-  const { books, isLoading, isError, message } = useSelector(
+  const { books, isSuccess, isLoading, isError, message } = useSelector(
     (state) => state.books
   )
 
@@ -48,10 +48,8 @@ const Books = () => {
       })
     }
 
-    return () => {
-      dispatch(reset())
-    }
-  }, [isError, message])
+    dispatch(reset())
+  }, [isError, isSuccess, message, dispatch])
 
   if (isLoading) {
     return <Spinner />
@@ -83,7 +81,7 @@ const Books = () => {
       <h1 className="my-3">Latest Books</h1>
       <Row xs={1} md={2} lg={4} className="g-2">
         {books.map((book) => (
-          <Col>
+          <Col key={book._id}>
             <Card>
               <Card.Body>
                 <LinkContainer
