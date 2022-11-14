@@ -1,6 +1,5 @@
 import './hero.css'
 import { Container } from 'react-grid-system'
-import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -13,9 +12,9 @@ const Hero = () => {
           <p className="hero__content-text ">
             From books to laundary to tiffin and more.
           </p>
-          <Link to="#services" as="button" className="hero__content-button">
+          <a href="#services" as="button" className="hero__content-button">
             Show Items
-          </Link>
+          </a>
         </div>
       </Container>
     </div>
