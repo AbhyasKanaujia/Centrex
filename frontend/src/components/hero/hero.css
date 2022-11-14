@@ -17,11 +17,12 @@
 .hero__content-title {
   font-size: 64px;
   font-family: var(--font-serif);
+  color: var(--color-primary-dark);
 }
 
 .hero__content-text {
   margin-top: 1rem;
-  color: var(--color-primary-light);
+  color: var(--color-primary-dark);
   text-shadow: var(--text-shadow);
 }
 
