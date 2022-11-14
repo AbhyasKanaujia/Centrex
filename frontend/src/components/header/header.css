@@ -1,0 +1,50 @@
+.header {
+  margin: 0;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-secondary-bianca);
+  align-items: center;
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header__brand-logo {
+  margin-right: 0.3rem;
+}
+
+.header__brand-title {
+  font: 1.5rem var(--font-serif);
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  margin: 0;
+  font-weight: bold;
+}
+
+.header__nav-item,
+.header__menu-item {
+  margin: 0 1rem;
+  list-style-type: none;
+  display: inline;
+}
+
+.header__nav-link,
+.header__menu-link {
+  text-decoration: none;
+  color: var(--color-primary-light);
+  font-family: var(--font-serif);
+}
+
+.header__menu-link {
+  color: var(--color-primary-dark);
+}
+
+.header__nav-link--active {
+  font-weight: bold;
+  color: var(--color-primary-dark);
+  border-bottom: 2px solid var(--color-primary-dark);
+}
