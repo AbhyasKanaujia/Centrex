@@ -6,7 +6,11 @@ const Book = require('../models/bookModel.js')
 // @route   GET /api/books
 // @access  Public
 const getAllBooks = asyncHandler(async (req, res) => {
-  const books = await Book.find({ visible: true }).select('-visible')
+  const query = req.query.query
+
+  const books = await Book.find({
+    title: { $regex: new RegExp('.*' + req.query.query + '.*', 'i') },
+  }).select('-visible')
 
   res.status(200).json(books)
 })
@@ -80,7 +84,9 @@ const updateBook = asyncHandler(async (req, res) => {
     throw new Error('Book not found')
   }
 
-  if (!book.seller.compare(req.user._id)) {
+  console.log(book)
+
+  if (!book.seller.equals(req.user._id)) {
     res.status(401)
 
     throw new Error('Only the seller can update book information')
@@ -105,7 +111,7 @@ const deleteBook = asyncHandler(async (req, res) => {
     throw new Error('Book not found')
   }
 
-  if (!book.seller.compare(req.user._id)) {
+  if (!book.seller.equals(req.user._id)) {
     res.status(401)
 
     throw new Error('Only the seller can delete a book')
