@@ -1,10 +1,13 @@
 .header {
+  background: var(--color-secondary-bianca);
+}
+.header__container {
   margin: 0;
-  padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
-  background: var(--color-secondary-bianca);
   align-items: center;
+
+  padding: 1rem 0;
 }
 
 .header__brand {
