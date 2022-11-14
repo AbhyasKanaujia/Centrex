@@ -50,6 +50,30 @@ const Header = () => {
                 Books
               </Link>
             </li>
+            <li className="header__nav-item">
+              <Link
+                className={`header__nav-link ${
+                  activeLinkName === 'Tiffin' ? 'header__nav-link--active' : ''
+                }`}
+                activeClassName="header__nav-link--active"
+                to="/tiffin"
+                onClick={() => setActiveLinkName('Tiffin')}
+              >
+                Tiffin
+              </Link>
+            </li>
+            <li className="header__nav-item">
+              <Link
+                className={`header__nav-link ${
+                  activeLinkName === 'Laundry' ? 'header__nav-link--active' : ''
+                }`}
+                activeClassName="header__nav-link--active"
+                to="/laundry"
+                onClick={() => setActiveLinkName('Laundry')}
+              >
+                Laundry
+              </Link>
+            </li>
           </ul>
         </div>
         <div>
