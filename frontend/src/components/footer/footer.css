@@ -1,0 +1,10 @@
+.footer {
+  background-color: #121212;
+  color: var(--color-secondary-white);
+  text-align: center;
+  padding: 2rem;
+}
+
+.footer__content-college-logo {
+  width: 3rem;
+}
