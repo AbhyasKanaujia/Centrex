@@ -28,3 +28,11 @@
 .features__feature-card-title {
   margin: 1rem auto;
 }
+
+.features__feature-card-icon {
+  background-color: var(--color-secondary-serenade);
+  width: 4rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}

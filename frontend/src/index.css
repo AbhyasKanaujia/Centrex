@@ -36,3 +36,6 @@ h6 {
   font-family: var(--font-serif);
 }
 
+h1 {
+  font-size: 3rem;
+}
