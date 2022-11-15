@@ -1,7 +1,7 @@
 .service-card {
   width: 18rem;
   height: 11.1248455rem;
-  padding: 2rem 3rem;
+  padding: 2rem;
   background-size: cover;
   background-position: center;
   border-radius: var(--border-radius);
